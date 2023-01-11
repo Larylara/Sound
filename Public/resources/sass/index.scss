@@ -1,0 +1,193 @@
+/************************
+        Reset css 
+************************/
+:root {
+
+    $clr-bs: black;
+    $clr-as: white;
+    $clr-bg: #978c81;
+    $clr-svg: #950000;
+    $clr-bg_hf: rgb(69, 69, 69);
+    $clr-navh:  #4c4343; 
+} 
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+ul,
+h1 {
+    margin: 0;
+}
+
+body {
+    margin: 0 auto;
+    width: 100%;
+}
+
+
+h1 a {
+    text-decoration: none;
+    color: var(--clr-bs);
+}
+
+.flex{
+    display: flex; 
+}
+
+/**************
+    Header
+**************/
+
+header {
+    background-image: linear-gradient( white, #978c81 );
+}
+
+.logo {
+    position: relative;
+
+    a>h1 {
+        position: absolute;
+        left: 10rem;
+        bottom: 5rem;
+    }
+
+    p {
+        position: absolute;
+        top: 4rem;
+        left: 10rem;
+    }
+}
+
+
+.icons {
+    width: 1.5rem;
+}
+
+
+.navbar {
+    position: relative;
+
+    nav {
+        position: absolute;
+        right: 0;
+        top: -6rem;
+
+        li { 
+            padding: .5rem .2rem;
+            margin-right: 1rem;
+            list-style: none;
+            width: 3rem;
+            border-radius: 50%;
+        }
+
+        li:hover {
+            background-color: #978c81;
+            padding: .5rem .2rem;
+
+            a {
+                color: black;
+            }
+        }
+    }
+
+    .n {
+        display: none;    }
+
+    div.drap {
+        border: 1px solid #978c81;
+        border-radius: .5rem;
+        position: absolute;
+        right: 10.8rem;
+        top: -3rem;
+        background-color: #978c81;
+
+        
+        ul {
+            list-style: none;
+            padding: .1rem;
+            
+            li {
+                padding: 1rem 0;
+            }
+            
+            li>a {
+                padding: 1rem;
+            }
+            
+            li:hover {
+                background-color: #978c81;
+
+                a {
+                    color: white;
+                }
+            }
+            
+        }
+
+    }
+    
+}
+  
+a {
+    padding: .5rem;
+    text-decoration: none;
+    color: black;
+}
+
+/**************
+    Login
+**************/
+
+.container {
+    text-align: center;
+    background-color: whitesmoke;
+} 
+
+form {
+    margin: 1rem;
+    padding: 1rem;
+    width: 30rem;
+    border: 1px solid #978c81;
+
+    div {
+        display: flex;
+        margin-bottom: 1.5rem;
+        justify-content: space-between;
+        
+        input {
+           border: 2px solid whitesmoke;
+            height: 2rem;
+            margin-left: 8rem;
+        }
+
+        button {
+            border-radius: 1.5rem;
+            border: 2px solid #978c81;
+            padding: .8rem;
+            cursor: pointer;
+            background-color: #978c81;
+            color: white;
+        }
+    }
+
+}
+
+
+/**************
+    Footer
+**************/
+
+footer {
+    background-image: url("../images/footer2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+
+    div.drap{
+        border: 2px solid black
+    }
+}
+

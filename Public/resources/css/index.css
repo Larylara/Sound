@@ -1,0 +1,156 @@
+/************************
+        Reset css 
+************************/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul,
+h1 {
+  margin: 0;
+}
+
+body {
+  margin: 0 auto;
+  width: 100%;
+}
+
+h1 a {
+  text-decoration: none;
+  color: var(--clr-bs);
+}
+
+.flex {
+  display: flex;
+}
+
+/**************
+    Header
+**************/
+header {
+  background-image: linear-gradient(white, #978c81);
+}
+
+.logo {
+  position: relative;
+}
+.logo a > h1 {
+  position: absolute;
+  left: 10rem;
+  bottom: 5rem;
+}
+.logo p {
+  position: absolute;
+  top: 4rem;
+  left: 10rem;
+}
+
+.icons {
+  width: 1.5rem;
+}
+
+.navbar {
+  position: relative;
+}
+.navbar nav {
+  position: absolute;
+  right: 0;
+  top: -6rem;
+}
+.navbar nav li {
+  padding: 0.5rem 0.2rem;
+  margin-right: 1rem;
+  list-style: none;
+  width: 3rem;
+  border-radius: 50%;
+}
+.navbar nav li:hover {
+  background-color: #978c81;
+  padding: 0.5rem 0.2rem;
+}
+.navbar nav li:hover a {
+  color: black;
+}
+.navbar .n {
+  display: none;
+}
+.navbar div.drap {
+  border: 1px solid #978c81;
+  border-radius: 0.5rem;
+  position: absolute;
+  right: 10.8rem;
+  top: -3rem;
+  background-color: #978c81;
+}
+.navbar div.drap ul {
+  list-style: none;
+  padding: 0.1rem;
+}
+.navbar div.drap ul li {
+  padding: 1rem 0;
+}
+.navbar div.drap ul li > a {
+  padding: 1rem;
+}
+.navbar div.drap ul li:hover {
+  background-color: #978c81;
+}
+.navbar div.drap ul li:hover a {
+  color: white;
+}
+
+a {
+  padding: 0.5rem;
+  text-decoration: none;
+  color: black;
+}
+
+/**************
+    Login
+**************/
+.container {
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+form {
+  margin: 1rem;
+  padding: 1rem;
+  width: 30rem;
+  border: 1px solid #978c81;
+}
+form div {
+  display: flex;
+  margin-bottom: 1.5rem;
+  justify-content: space-between;
+}
+form div input {
+  border: 2px solid whitesmoke;
+  height: 2rem;
+  margin-left: 8rem;
+}
+form div button {
+  border-radius: 1.5rem;
+  border: 2px solid #978c81;
+  padding: 0.8rem;
+  cursor: pointer;
+  background-color: #978c81;
+  color: white;
+}
+
+/**************
+    Footer
+**************/
+footer {
+  background-image: url("../images/footer2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+footer div.drap {
+  border: 2px solid black;
+}
+
+/*# sourceMappingURL=index.css.map */
