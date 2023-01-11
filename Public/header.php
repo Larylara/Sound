@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -26,6 +30,11 @@
                 <li>
                    <i style='font-size:1.5rem; cursor:pointer;' class='fas log'>&#xf2bd;</i>
                 </li>
+<!-- 
+    
+                    <li><a href="/pages-controller/profil"><i style='font-size:24px' class='fas'>&#xf2f6;</i></a></li>
+                    <li><a href="/pages-controller/profil"><i style='font-size:24px' class='fas'>&#xf2f6;</i></a></li> -->
+
                 <li>
                     <a href="#"><i style='font-size:1.2rem' class="fa fa-search" style="font-size:18px"></i></a>
                 </li>
@@ -36,11 +45,19 @@
                     <a href="/pages-controller/about"><i style='font-size:1.4rem' class="material-icons">&#xe5d2;</i></a>
                 </li>
             </nav>
+
             <div class="drap n">
-                <ul>
-                    <li><a href="login">Se connecter</a></li>
-                    <li><a href="/pages-controller/register">S'inscrire</a></li>
-                </ul>
+                <?php if (isset($_SESSION["uname"])) : ?>
+                    <ul>
+                        <li><a href="profil">Mon profil</a></li>
+                        <li><a href="/pages-controller/register">Se déconnecter</a></li>
+                    </ul>
+                <?php else : ?>
+                    <ul>
+                        <li><a href="login">Se connecter</a></li>
+                        <li><a href="/pages-controller/register">S'inscrire</a></li>
+                    </ul>
+                <?php endif; ?>
             </div>
         </div>    
     

@@ -22,4 +22,8 @@
              require_once ("../App/Views/about.php");
         }
 
+        public function profil() {
+             require_once ("../App/Views/profil.php");
+        }
+
     }

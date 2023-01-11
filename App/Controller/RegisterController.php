@@ -1,4 +1,5 @@
 <?php
+    session_start();
 
     require "../App/Models/UserModel.php";
 
@@ -89,7 +90,7 @@
         public function register(){
             
             if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit"])) {
-    
+                
                 $this->lname = $this->test_input($_POST["lname"]);
                 $this->fname = $this->test_input($_POST["fname"]);
                 $this->username = $this->test_input($_POST["uname"]);
@@ -105,7 +106,7 @@
             $array = $this->model->userRegister($this->email, $this->username);
 
             $longueur = count($array);
-
+            
             if($longueur>0) {
                 
                 header("Location: /pages-controller/register?msg=Ce nom d'utilisateur ou l'addresse email existe déjà");
@@ -134,7 +135,6 @@
             
         }
 
-
         public function login(){
             
             if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit"])) {
@@ -151,16 +151,23 @@
             $this->model = new UserModel();
             $forlog = $this->model->userLogin($this->username);
 
+            $pass = password_verify($this->pwd, $forlog[0]["user_password"]);
+
             $length = count($forlog);
 
-            if($length>0) {
-                
+            if($pass === true) {
+                     
+                $_SESSION["lname"] = $forlog[0]["user_lastname"];
+                $_SESSION["fname"] = $forlog[0]["user_firstname"];
+                $_SESSION["uname"] = $this->username;
+                $_SESSION["email"] = $forlog[0]["user_username"];
+
                 header("Location: /pages-controller/home");
                 exit();
 
             } else {
 
-                header("Location: /pages-controller/login?msg=Ce nom d'utilisateur ou l'addresse email n'existe pas");
+                header("Location: /pages-controller/login?msg=Ce nom d'utilisateur ou mot de passe n'existe pas");
 
             }
             }
