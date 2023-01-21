@@ -2,8 +2,9 @@
     session_start();
 
     require "../App/Models/UserModel.php";
+    require "../App/Controller/ImagesController.php";
 
-    class RegisterController {
+    class UserController {
 
         //variable pour instancier la classe UserModel
         protected $model;
@@ -14,6 +15,11 @@
         protected $email;
         protected $pwd;
         protected $c_pwd;
+        protected $pic;
+
+        protected $file;
+        protected $descript;
+        protected $date_time;
 
         public function validateinput() {
           
@@ -98,6 +104,18 @@
                 $this->pwd  = $this->test_input($_POST["pwd"]);
                 $this->c_pwd  = $this->test_input($_POST["c_pwd"]);
 
+                $file_name = $_FILES["file"]["name"];
+                $file_path = $_FILES["file"]["tmp_name"];
+                $file_error = $_FILES["file"]["error"];
+                $file_size = $_FILES["file"]["size"];
+
+                //   var_dump($file_name, $file_path);
+                //     exit();
+
+
+                $inst = new ImagesController($file_name, $file_path, $file_error, $file_size);
+                $this->pic = $inst->controll();
+
             //vérification du mot de passe
             $this->validateinput();
     
@@ -114,8 +132,14 @@
 
             } else {
 
-                $this->model->insertUser($this->lname, $this->fname, $this->username, $this->email, $this->pwd);
-                header("Location: /pages-controller/register?msg=Vous êtes inscrit");
+                $this->model->insertUser($this->lname, $this->fname, $this->username, $this->email, $this->pwd, $this->pic);
+              
+                // $_SESSION["lname"] = $this->lname;
+                // $_SESSION["fname"] = $this->fname;
+                // $_SESSION["uname"] = $this->username;
+                // $_SESSION["email"] = $this->email;
+                
+                header("Location: /pages-controller/home");
 
             }
             }
@@ -150,29 +174,36 @@
             // // insertion dans la bdd
             $this->model = new UserModel();
             $forlog = $this->model->userLogin($this->username);
+                // var_dump($forlog);
+                // exit();
 
             $pass = password_verify($this->pwd, $forlog[0]["user_password"]);
 
             $length = count($forlog);
 
             if($pass === true) {
-                     
+                
                 $_SESSION["lname"] = $forlog[0]["user_lastname"];
                 $_SESSION["fname"] = $forlog[0]["user_firstname"];
                 $_SESSION["uname"] = $this->username;
-                $_SESSION["email"] = $forlog[0]["user_username"];
-
+                $_SESSION["email"] = $forlog[0]["user_email"];
+                $_SESSION["user_file"] = $forlog[0]["user_pic"];
+                $_SESSION["admin"] = $forlog[0]["role"] == "admin";
+                $_SESSION["users"] = $forlog[0]["role"] == "users";
+                
                 header("Location: /pages-controller/home");
                 exit();
-
+                
             } else {
-
+                
                 header("Location: /pages-controller/login?msg=Ce nom d'utilisateur ou mot de passe n'existe pas");
-
+                
             }
-            }
-
         }
-   
+        
     }
+    
+}
+        
+  
     

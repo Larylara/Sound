@@ -2,11 +2,17 @@
     require_once "../App/Models/connexion.php";
 
     class UserModel extends Connexion {
-        private $lname;
-        private $fname;
-        private $username;
-        private $email;
-        private $password;
+
+        protected $lname;
+        protected $fname;
+        protected $username;
+        protected $email;
+        protected $password;
+        protected $pic;
+
+        protected $file;
+        protected $descript;
+        protected $date_time;
 
 
         public function userRegister($u_email, $u_username) {
@@ -28,18 +34,37 @@
             return $tab;
         }
         
-        public function insertUser($lname, $fname, $username, $email, $pwd) {
+        public function cardImg() {
+
+            // connexion à la bdd
+            $connect = $this->connect();
+        
+            // cette requête sélectionne tous les articles de la base de données
+            $recup = $connect->prepare("SELECT * FROM `sound`.users");
+        
+            $recup->execute();
+        
+            //transformation des données en tableau
+            $results = $recup->fetchAll();
+                   
+            //retourne un tableau
+            return $results;
+
+        }
+
+        public function insertUser($lname, $fname, $username, $email, $pwd, $pic) {
             
             $this->lname = $lname;
             $this->fname = $fname;
             $this->username = $username;
             $this->email = $email;
             $this->pwd = $pwd;
+            $this->pic = $pic;
             
             // connexion à la bdd
             $conn = $this->connect();
             
-            $request = "INSERT INTO `sound`.users (user_id, user_lastname, user_firstname, user_username, user_email, user_password) VALUES (NULL, :lname, :fname, :username, :email, :pwd)";
+            $request = "INSERT INTO `sound`.users (user_id, user_lastname, user_firstname, user_username, user_email, user_password, user_pic) VALUES (NULL, :lname, :fname, :username, :email, :pwd, :pic)";
 
             
             // prepare()
@@ -52,7 +77,8 @@
                 ":fname" => $this->fname,
                 ":username" => $this->username,
                 ":email" => $this->email,
-                ":pwd" => password_hash($this->pwd, PASSWORD_DEFAULT)
+                ":pwd" => password_hash($this->pwd, PASSWORD_DEFAULT),
+                ":pic" => $this->pic
                 
             ]);
         }
@@ -75,5 +101,22 @@
             //retourne un tableau
             return $arr;
         }
+
+        public function idRequest() {
+
+            // connexion à la bdd
+            $connect = $this->connect();
         
+            // cette requête sélectionne tous les articles de la base de données
+            $recup = $connect->prepare("SELECT * FROM `sound`.requests");
+        
+            $recup->execute();
+        
+            //transformation des données en tableau
+            $results = $recup->fetchAll();
+                   
+            //retourne un tableau
+            return $results;
+        }
+
     }

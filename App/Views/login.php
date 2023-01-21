@@ -5,11 +5,10 @@
 <main class="container">
     
     <h4> <?php echo $_GET["msg"] ?? "" ?></h4>
-    
-    <form action="/register-controller/login" method="post" class="login">
+    <form action="/user-controller/login" method="post" class="form">
         <div>
             <label for="pwd">Nom d'utilisateur</label>
-            <input type="pwd" name="uname" id="pwd">
+            <input type="pwd" name="uname" id="uname">
         </div>
         <hr>
         <div>

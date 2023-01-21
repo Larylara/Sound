@@ -1,6 +1,16 @@
+@charset "UTF-8";
 /************************
         Reset css 
 ************************/
+:root {
+  --clr-bs: black;
+  --clr-as: white;
+  --clr-bg: #978c81;
+  --clr-svg: #950000;
+  --clr-bg_hf: rgb(69, 69, 69);
+  --clr-navh: #4c4343;
+}
+
 *,
 *::before,
 *::after {
@@ -8,7 +18,10 @@
 }
 
 ul,
-h1 {
+h1,
+h2,
+h3,
+p.mb {
   margin: 0;
 }
 
@@ -26,6 +39,27 @@ h1 a {
   display: flex;
 }
 
+.n {
+  display: none;
+}
+
+.red {
+  color: red;
+}
+
+.center {
+  text-align: center;
+}
+
+.art_pic {
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+  border: 1px solid white;
+}
+
 /**************
     Header
 **************/
@@ -34,54 +68,34 @@ header {
 }
 
 .logo {
-  position: relative;
-}
-.logo a > h1 {
-  position: absolute;
-  left: 10rem;
-  bottom: 5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 .logo p {
-  position: absolute;
-  top: 4rem;
-  left: 10rem;
+  margin: 0;
 }
 
 .icons {
   width: 1.5rem;
 }
 
-.navbar {
-  position: relative;
-}
 .navbar nav {
-  position: absolute;
-  right: 0;
-  top: -6rem;
+  justify-content: space-around;
 }
 .navbar nav li {
-  padding: 0.5rem 0.2rem;
-  margin-right: 1rem;
   list-style: none;
   width: 3rem;
   border-radius: 50%;
 }
 .navbar nav li:hover {
   background-color: #978c81;
-  padding: 0.5rem 0.2rem;
 }
 .navbar nav li:hover a {
   color: black;
 }
-.navbar .n {
-  display: none;
-}
 .navbar div.drap {
   border: 1px solid #978c81;
   border-radius: 0.5rem;
-  position: absolute;
-  right: 10.8rem;
-  top: -3rem;
   background-color: #978c81;
 }
 .navbar div.drap ul {
@@ -100,44 +114,222 @@ header {
 .navbar div.drap ul li:hover a {
   color: white;
 }
+.navbar div.drapp {
+  border: 1px solid #978c81;
+  border-radius: 0.5rem;
+  background-color: #978c81;
+}
+.navbar div.drapp ul {
+  list-style: none;
+  padding: 0.1rem;
+}
+.navbar div.drapp ul li {
+  padding: 1rem 0;
+}
+.navbar div.drapp ul li > a {
+  padding: 1rem;
+}
+.navbar div.drapp ul li:hover {
+  background-color: #978c81;
+}
+.navbar div.drapp ul li:hover a {
+  color: white;
+}
+.navbar .aff {
+  border: 1px solid #978c81;
+  border-radius: 0.5rem;
+  background-color: #978c81;
+}
+.navbar .aff input {
+  border: 2px solid whitesmoke;
+  border-radius: 0.5rem;
+  height: 2rem;
+  width: 100%;
+}
 
 a {
-  padding: 0.5rem;
   text-decoration: none;
   color: black;
 }
 
-/**************
-    Login
-**************/
+/********************************
+    Login And Register Forms
+********************************/
 .container {
   text-align: center;
-  background-color: whitesmoke;
+  padding: 1rem;
 }
 
-form {
+.form {
   margin: 1rem;
   padding: 1rem;
-  width: 30rem;
   border: 1px solid #978c81;
+  border-radius: 2rem;
+  box-shadow: 10px 10px #978c81;
 }
-form div {
+.form div {
   display: flex;
   margin-bottom: 1.5rem;
   justify-content: space-between;
 }
-form div input {
-  border: 2px solid whitesmoke;
+.form div input {
+  width: 15rem;
   height: 2rem;
   margin-left: 8rem;
+  border: 2px solid whitesmoke;
 }
-form div button {
-  border-radius: 1.5rem;
-  border: 2px solid #978c81;
+.form div button {
   padding: 0.8rem;
   cursor: pointer;
-  background-color: #978c81;
+  border-radius: 1.5rem;
+  border: 2px solid #978c81;
+  background-color: var(--clr-bg);
   color: white;
+}
+
+/********************************
+          Contact /Add Form
+********************************/
+.contact {
+  margin: 0.5rem;
+}
+.contact .c_form {
+  border: 1px solid #978c81;
+  border-radius: 2rem;
+  box-shadow: 10px 10px #978c81;
+  padding: 1rem;
+}
+.contact .c_form input {
+  width: 100%;
+  height: 4rem;
+  border: 1px solid white;
+}
+.contact .c_form button {
+  padding: 0.8rem;
+  cursor: pointer;
+  border-radius: 1.5rem;
+  border: 2px solid #978c81;
+  background-color: var(--clr-bg);
+  color: white;
+}
+
+.art {
+  margin: 1rem;
+}
+.art .add input {
+  width: 100%;
+  height: 4rem;
+  border: 1px solid white;
+}
+.art .add button {
+  padding: 0.8rem;
+  cursor: pointer;
+  border-radius: 1.5rem;
+  border: 2px solid #978c81;
+  background-color: var(--clr-bg);
+  color: white;
+}
+
+/********************************
+            Home
+********************************/
+.entête {
+  background-image: url("../images/partner2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
+.entête figure {
+  padding: 1rem;
+  border: 1px solid black;
+  border-radius: 2rem;
+}
+.entête figure button {
+  padding: 0.8rem;
+  cursor: pointer;
+  border-radius: 1.5rem;
+  border: 2px solid #978c81;
+  background-color: var(--clr-bg);
+  color: white;
+}
+.entête figure button a {
+  padding: 0.5rem;
+  color: white;
+}
+
+figcaption {
+  justify-content: space-between;
+}
+figcaption .fas {
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+p.elp {
+  white-space: nowrap;
+  width: 400px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#comments {
+  margin: 1rem;
+  height: 5rem;
+}
+
+.categories {
+  margin: 1rem;
+  justify-content: center;
+}
+.categories ul {
+  padding: 0;
+  justify-content: space-around;
+  list-style: none;
+}
+.categories ul li {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+
+/********************************
+           Profil
+********************************/
+.profil {
+  border: 1px solid #978c81;
+  border-radius: 2rem;
+  box-shadow: 10px 10px #978c81;
+  padding: 1rem;
+}
+
+.profil_pic {
+  width: 20rem;
+  border-radius: 50%;
+}
+
+img {
+  margin: 1rem 0;
+}
+
+/********************************
+        Commentaires pics       
+********************************/
+.com_pic {
+  border-radius: 50%;
+  width: 3rem;
+}
+
+/********************************
+        Requests display
+********************************/
+.req {
+  border: 1px solid #978c81;
+  border-radius: 2rem;
+  box-shadow: #978c81;
+  padding: 1rem;
 }
 
 /**************
@@ -151,6 +343,10 @@ footer {
 }
 footer div.drap {
   border: 2px solid black;
+}
+footer hr {
+  width: 2rem;
+  border: 1px solid black;
 }
 
 /*# sourceMappingURL=index.css.map */

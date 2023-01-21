@@ -4,10 +4,10 @@
 
 <main class="container">
     
-        <h4> <?php echo $_GET["msg"] ?? "" ?></h4>
-
+    <h4> <?php echo $_GET["msg"] ?? "" ?></h4>
     
-    <form action="/register-controller/register" method="post">
+    <form action="/user-controller/register" method="post" class="form" enctype="multipart/form-data">
+
         <div>
             <label for="lname">Nom</label>
             <input type="lname" name="lname" id="lname">
@@ -38,10 +38,15 @@
             <input type="password" name="c_pwd" id="c_pwd" >
         </div>
         <div>
+            <input type="file" name="file" id="file">
+        </div>
+        <div>
             <button type="submit" name="submit">S'inscrire</button>
             <a href="login">J'ai déjà un compte</a>
         </div>
+        
     </form>
+
 </main>
 
 <?php
