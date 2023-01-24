@@ -18,21 +18,16 @@
         }
 
         public function emptyInputs() {
-            
             if (empty($this->lname) || empty($this->fname) || empty($this->email) || empty($this->messages)) {
                 
                 header("Location: /pages-controller/contact?msg=Veuillez remplir tous les champs");
                 exit();
-                
             } else {
                 return false;
             }
-            
         }
 
         public function contact(){
-            
-            
             if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit"])) {
                 
                 $this->lname = $this->test_input($_POST["lname"]);
@@ -61,7 +56,6 @@
 
                 }
             }
-
         }
 
     }

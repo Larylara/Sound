@@ -16,7 +16,6 @@
 
 
         public function userRegister($u_email, $u_username) {
-           
             $this->username = $u_username;
             $this->email = $u_email;
             // connexion à la bdd
@@ -35,7 +34,6 @@
         }
         
         public function cardImg() {
-
             // connexion à la bdd
             $connect = $this->connect();
         
@@ -49,11 +47,9 @@
                    
             //retourne un tableau
             return $results;
-
         }
 
         public function insertUser($lname, $fname, $username, $email, $pwd, $pic) {
-            
             $this->lname = $lname;
             $this->fname = $fname;
             $this->username = $username;
@@ -66,7 +62,6 @@
             
             $request = "INSERT INTO `sound`.users (user_id, user_lastname, user_firstname, user_username, user_email, user_password, user_pic) VALUES (NULL, :lname, :fname, :username, :email, :pwd, :pic)";
 
-            
             // prepare()
             $stmt = $conn->prepare($request);
             
@@ -82,9 +77,8 @@
                 
             ]);
         }
-        
+
         public function userLogin($u_username) {
-                   
             $this->username = $u_username;
             
             // connexion à la bdd
@@ -103,7 +97,6 @@
         }
 
         public function idRequest() {
-
             // connexion à la bdd
             $connect = $this->connect();
         
@@ -118,5 +111,5 @@
             //retourne un tableau
             return $results;
         }
-
+        
     }

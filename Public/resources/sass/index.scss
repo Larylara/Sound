@@ -1,14 +1,17 @@
+/*******************************************************************************
+                                    Mobile first
+*******************************************************************************/
+
+
 /************************
         Reset css 
 ************************/
 :root {
-
-    --clr-bs: black;
-    --clr-as: white;
-    --clr-bg: #978c81;
-    --clr-svg: #950000;
-    --clr-bg_hf: rgb(69, 69, 69);
-    --clr-navh:  #4c4343; 
+    --clr-black: black;
+    --clr-white: white;
+    --clr-w_smoke: whitesmoke;
+    --clr-pastel: #978c81;
+    --clr-red: red;
 } 
 
 *,
@@ -30,12 +33,6 @@ body {
     width: 100%;
 }
 
-
-h1 a {
-    text-decoration: none;
-    color: var(--clr-bs);
-}
-
 .flex{
     display: flex; 
 }
@@ -45,54 +42,58 @@ h1 a {
 }
 
 .red {
-    color: red;
+    color: var(--clr-red);
 }
 
 .center {
     text-align: center;
 }
+
 .art_pic {
     width: 100%;
-    // border: 2px solid purple;
 }
 
-textarea {
-    width: 100%;
-    border: 1px solid white;
-}
-
-@mixin buttons {
-    padding: .8rem;
-    cursor: pointer;
-    border-radius: 1.5rem;
-    border: 2px solid #978c81;
-    background-color: var(--clr-bg);
-    color: white;
-}
+/*********************
+        @mixin
+**********************/
 
 @mixin positions($value) {
     position: $value;
 }
 
-@mixin c_a {
+@mixin border($px, $color) {
+    border: $px solid var($color);
+}
 
+@mixin bcg_c($color) {
+    background-color: var($color);
+}
+
+@mixin buttons {
+    @include border(2px, --clr-pastel);
+    @include bcg_c(--clr-pastel);
+    border-radius: 1.5rem;
+    padding: .8rem;
+    color: white;
+    cursor: pointer;
+}
+
+@mixin c_a {
     input {
         width: 100%;
         height: 4rem;
         border: 1px solid white;
     }
-
-    // textarea {
-    //     width: 100%;
-    //     border: 1px solid white;
-    // }
-
+    
     button {
         @include buttons();
     }
-
 }
 
+textarea {
+    @include border(1px, --clr-white);
+    width: 100%;
+}
 
 /**************
     Header
@@ -111,14 +112,11 @@ header {
     }
 }
 
-
 .icons {
     width: 1.5rem;
 }
 
-
 .navbar {
-    
     nav {
         justify-content: space-around;
 
@@ -129,7 +127,7 @@ header {
         }
 
         li:hover {
-            background-color: #978c81;
+            @include bcg_c(--clr-pastel);
 
             a {
                 color: black;
@@ -138,10 +136,9 @@ header {
     }
 
     div.drap {
-        border: 1px solid #978c81;
+        @include border(1px, --clr-pastel);
+        @include bcg_c(--clr-pastel);
         border-radius: .5rem;
-        background-color: #978c81;
-
         
         ul {
             list-style: none;
@@ -149,28 +146,26 @@ header {
             
             li {
                 padding: 1rem 0;
-            }
-            
-            li>a {
-                padding: 1rem;
+                
+                a {
+                    padding: 1rem;
+                }
             }
             
             li:hover {
-                background-color: #978c81;
+                @include bcg_c(--clr-pastel);
 
                 a {
                     color: white;
                 }
             }
-            
         }
-
     }
 
     div.drapp {
-        border: 1px solid #978c81;
         border-radius: .5rem;
-        background-color: #978c81;
+        @include bcg_c(--clr-pastel);
+        @include border(1px , --clr-pastel);
 
         ul {
             list-style: none;
@@ -185,30 +180,26 @@ header {
             }
             
             li:hover {
-                background-color: #978c81;
+                @include bcg_c(--clr-pastel);
 
                 a {
                     color: white;
                 }
             }
-            
         }
-
     }
 
     .aff {
-        border: 1px solid #978c81;
+        @include border(1px, --clr-pastel);
+        @include bcg_c(--clr-pastel);
         border-radius: .5rem;
-        background-color: #978c81;
 
         input {
-            border: 2px solid whitesmoke;
             border-radius: .5rem;
             height: 2rem;
             width: 100%;
         }
-    }
-    
+    }  
 }
   
 a {
@@ -222,49 +213,45 @@ a {
 
 .container {
     text-align: center;
-    // background-color: whitesmoke;
     padding: 1rem;
 } 
 
 .form {
+    @include border(1px, --clr-pastel);
+    box-shadow: 10px 10px var(--clr-pastel);
+    border-radius: 2rem;
     margin: 1rem;
     padding: 1rem;
-    border: 1px solid #978c81;
-    border-radius: 2rem;
-    box-shadow: 10px 10px #978c81;
 
     div {
-        display: flex;
         margin-bottom: 1.5rem;
         justify-content: space-between;
         
         input {
-            width: 15rem;
+            width: 9rem;
             height: 2rem;
             margin-left: 8rem;
-            border: 2px solid whitesmoke;
         }
 
         button {
             @include buttons();
         }
     }
-
 }
 
-/********************************
-          Contact /Add Form
+/*******************************
+        Contact /Add Form       
 ********************************/
 
 .contact {
     margin: .5rem;
 
     .c_form {
-        border: 1px solid #978c81;
+        @include c_a();
+        @include border(1px, --clr-pastel);
         border-radius: 2rem;
         box-shadow: 10px 10px #978c81;
         padding: 1rem;
-        @include c_a();
     }
 }
 
@@ -290,33 +277,39 @@ a {
     justify-content: center;
 
     figure {
-        padding: 1rem;
-        border: 1px solid black;
+        @include border(2px, --clr-pastel);
         border-radius: 2rem;
+        padding: 1rem;
         
         button {
             @include buttons();
             
             a {
                 padding:.5rem;
-                color: white;
+                color: var(--clr-white);
             }
         }
-        
-    }
-    
-    
+    }   
+}
+
+
+/********************************
+            About
+********************************/
+
+span {
+    font-style: italic;
+    font-weight: 700;
 }
 
 figcaption {
     justify-content: space-between;
 
     .fas {
-        cursor: pointer;
         margin-left: .5rem;
+        cursor: pointer;
     }
 }
-
 
 p.elp {
     white-space: nowrap;
@@ -325,14 +318,12 @@ p.elp {
     text-overflow: ellipsis;
 }
   
-
 #comments {
     margin: 1rem;
     height: 5rem;
 } 
 
 .categories {
-
     margin: 1rem;
     justify-content: center;
 
@@ -342,23 +333,20 @@ p.elp {
         list-style: none;
         
         li {
-            padding: .5rem;
-            margin: .5rem;
-            border: 1px solid black;
+            @include border(1px, --clr-black);
             border-radius: 1rem;
-
+            margin: .5rem;
+            padding: .5rem;
         }
     }
-
 }
 
-
 /********************************
-           Profil
+            Profil
 ********************************/
 
 .profil {
-    border: 1px solid #978c81;
+    @include border(1px, --clr-pastel);
     border-radius: 2rem;
     box-shadow: 10px 10px #978c81;
     padding: 1rem;
@@ -387,11 +375,22 @@ img {
 ********************************/
 
 .req {
-    border: 1px solid #978c81;
+    @include border(1px, --clr-pastel);
+    box-shadow: var(--clr-pastel);
     border-radius: 2rem;
-    box-shadow: #978c81;
     padding: 1rem; 
 }
+
+/********************************
+            Dashboard
+********************************/
+
+.table {
+    @include border(1px, --clr-black);
+    gap: 1rem;
+    width: 100%;
+}
+
 
 
 /**************
@@ -405,12 +404,45 @@ footer {
     width: 100%;
 
     div.drap{
-        border: 2px solid black
+        @include border(2px, --clr-black);
     }
 
     hr {
+        @include border(1px, --clr-black);
         width: 2rem;
-        border: 1px solid black;
     }
 }
 
+
+/********************************************************
+                        Responsive                      
+*********************************************************/
+
+/*******************************************
+                Tablet
+*******************************************/
+    // @media screen and (min-width: 460px) {
+        
+    // }
+
+/*******************
+        Header            
+********************/
+
+
+/*******************
+        Footer            
+********************/
+
+        /*******************************************
+                        Desktop
+        *******************************************/
+
+/*******************
+        Header            
+********************/
+
+
+/*******************
+        Footer            
+********************/

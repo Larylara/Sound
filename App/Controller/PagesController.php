@@ -1,13 +1,10 @@
 <?php
-
      require "../App/Models/ArticleModel.php";
      require "../App/Models/UserModel.php";
-     require "../App/Models/CommentModel.php";
 
      class PagesController {
         
           public function home() {
-
                $card = new ArticleModel();
                $data = $card->cardArticle();
 
@@ -31,22 +28,16 @@
           }
 
           public function article() {
-
                $regex = $_SERVER["QUERY_STRING"];
                $reg = preg_match("/(?<id>\d+)/", $regex, $array);
                $id = $array["id"];
-
+               
                $card = new ArticleModel();
                $data = $card->idArticle($id);
-
-               // $img = new UserModel();
-               // $pp = $img->cardImg();
-
                require_once ("../App/Views/article.php");
           }
 
           public function profil() {
-
                $img = new UserModel();
                $pp = $img->cardImg();
 
@@ -54,6 +45,8 @@
           }
 
           public function admin() {
+               $card = new ArticleModel();
+               $data = $card->cardArticle();
 
                $coms = new UserModel();
                $dt = $coms->idRequest();

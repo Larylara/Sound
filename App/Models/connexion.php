@@ -1,12 +1,11 @@
 <?php
 
     class Connexion {
+        
         /**
          * La fonction permettant la connexion à la base de donnée
          * @return PDO
-         * 
          */
-
         protected function connect() {
             /**
              * Le nom du serveur
@@ -43,6 +42,6 @@
                 echo $e->getMessage();
             }
         }
+
     }
 
-?>

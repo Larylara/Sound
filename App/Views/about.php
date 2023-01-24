@@ -3,7 +3,6 @@
 ?>
 
 <main class="container art">
-    
     <div>
         <h2>A propos de nous</h2>
 
@@ -49,7 +48,6 @@
             </form>
         <?php endif; ?> 
     </div>
-
 </main>
 
 <?php

@@ -3,16 +3,10 @@
 ?>
 
 <main class="container center">
-
     <div class="profil">
-
         <h2>Votre Profil</h2>
-
-            
             <?php if(isset($_SESSION["uname"])) : ?>
-
-                    <img class="profil_pic" src="../assets/<?php echo $_SESSION["user_file"]?>" alt="img">
-                
+                <img class="profil_pic" src="../assets/<?php echo $_SESSION["user_file"]?>" alt="img">
                 <br>
                 <p>Nom : <strong><?php echo $_SESSION["lname"]; ?></strong></p>
                 <p>Prénoms : <strong><?php echo $_SESSION["fname"]; ?></strong></p>
@@ -25,10 +19,7 @@
                 <p>Nom d'utilisateur : </p>
                 <p class="mb">Addresse email: </p>
             <?php endif; ?>
-
-
     </div>
-
 </main>
 
 <?php

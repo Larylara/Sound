@@ -1,9 +1,8 @@
 <?php
-
     require_once "../App/Models/connexion.php";
-
+    
     class ArticleModel extends Connexion {
-
+        
         public function insertArticle($a_lname, $a_fname, $a_email, $a_artname, $a_file, $a_descript) {
             
             $lname = $a_lname;
@@ -49,29 +48,27 @@
                    
             //retourne un tableau
             return $results;
-
+            
         }
-
+        
         public function idArticle($id_) {
-
             $id = $id_;
+            // var_dump($id);
 
             // connexion à la bdd
             $connect = $this->connect();
-        
+            
             // cette requête sélectionne tous les articles de la base de données
-            $recup = $connect->prepare("SELECT * FROM `sound`.articles WHERE art_id=? ");
-        
+            $recup = $connect->prepare("SELECT * FROM `sound`.articles WHERE art_id=?");
+            
             $recup->execute([
                 $id
             ]);
-        
+            
             //transformation des données en tableau
             $results = $recup->fetchAll();
-                   
+            
             //retourne un tableau
             return $results;
-
         }
-
     }

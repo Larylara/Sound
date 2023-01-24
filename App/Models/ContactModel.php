@@ -10,7 +10,6 @@
         protected $messages;
 
         public function insertContact($req_lname, $req_fname, $req_email, $req_messages) {
-            
             $this->lname = $req_lname;
             $this->fname = $req_fname;
             $this->email = $req_email;

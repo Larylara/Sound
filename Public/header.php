@@ -24,11 +24,8 @@
                 </a>
                 <p>La musique au bout des doigts</p>
             </div>
-            
         </div>
-
         <div class="navbar center">
-            
             <nav class="flex ">
                 <li>
                     <a href="/pages-controller/home"><i style='font-size:1.9rem; padding:.5rem' class="material-icons">&#xe88a;</i></a>
@@ -49,14 +46,12 @@
                     <a href="/pages-controller/about"><i style='font-size:1.5rem ; padding:.6rem' class="material-icons">&#xe5d2;</i></a>
                 </li>
             </nav>
-
             <div class="drap n">
                 <ul>
                     <li><a href="login" class="login">Se connecter</a></li>
                     <li><a href="/pages-controller/register" class="register">S'inscrire</a></li>
                 </ul>
             </div>
-
             <div class="drapp n">
                 <ul>
                     <li><a href="profil">Mon profil</a></li>
@@ -64,11 +59,8 @@
                         <li><a href="admin">Dashboard</a></li>
                     <?php endif; ?>  
                     <li><a href="logout">Se déconnecter</a></li>
-
-                    
                 </ul>
             </div>
-
             <div class="aff n">
                 <input type="search" placeholder="Taper votre recherche">
             </div>

@@ -1,14 +1,16 @@
 @charset "UTF-8";
+/*******************************************************************************
+                                    Mobile first
+*******************************************************************************/
 /************************
         Reset css 
 ************************/
 :root {
-  --clr-bs: black;
-  --clr-as: white;
-  --clr-bg: #978c81;
-  --clr-svg: #950000;
-  --clr-bg_hf: rgb(69, 69, 69);
-  --clr-navh: #4c4343;
+  --clr-black: black;
+  --clr-white: white;
+  --clr-w_smoke: whitesmoke;
+  --clr-pastel: #978c81;
+  --clr-red: red;
 }
 
 *,
@@ -30,11 +32,6 @@ body {
   width: 100%;
 }
 
-h1 a {
-  text-decoration: none;
-  color: var(--clr-bs);
-}
-
 .flex {
   display: flex;
 }
@@ -44,7 +41,7 @@ h1 a {
 }
 
 .red {
-  color: red;
+  color: var(--clr-red);
 }
 
 .center {
@@ -55,9 +52,12 @@ h1 a {
   width: 100%;
 }
 
+/*********************
+        @mixin
+**********************/
 textarea {
+  border: 1px solid var(--clr-white);
   width: 100%;
-  border: 1px solid white;
 }
 
 /**************
@@ -88,15 +88,15 @@ header {
   border-radius: 50%;
 }
 .navbar nav li:hover {
-  background-color: #978c81;
+  background-color: var(--clr-pastel);
 }
 .navbar nav li:hover a {
   color: black;
 }
 .navbar div.drap {
-  border: 1px solid #978c81;
+  border: 1px solid var(--clr-pastel);
+  background-color: var(--clr-pastel);
   border-radius: 0.5rem;
-  background-color: #978c81;
 }
 .navbar div.drap ul {
   list-style: none;
@@ -105,19 +105,19 @@ header {
 .navbar div.drap ul li {
   padding: 1rem 0;
 }
-.navbar div.drap ul li > a {
+.navbar div.drap ul li a {
   padding: 1rem;
 }
 .navbar div.drap ul li:hover {
-  background-color: #978c81;
+  background-color: var(--clr-pastel);
 }
 .navbar div.drap ul li:hover a {
   color: white;
 }
 .navbar div.drapp {
-  border: 1px solid #978c81;
   border-radius: 0.5rem;
-  background-color: #978c81;
+  background-color: var(--clr-pastel);
+  border: 1px solid var(--clr-pastel);
 }
 .navbar div.drapp ul {
   list-style: none;
@@ -130,18 +130,17 @@ header {
   padding: 1rem;
 }
 .navbar div.drapp ul li:hover {
-  background-color: #978c81;
+  background-color: var(--clr-pastel);
 }
 .navbar div.drapp ul li:hover a {
   color: white;
 }
 .navbar .aff {
-  border: 1px solid #978c81;
+  border: 1px solid var(--clr-pastel);
+  background-color: var(--clr-pastel);
   border-radius: 0.5rem;
-  background-color: #978c81;
 }
 .navbar .aff input {
-  border: 2px solid whitesmoke;
   border-radius: 0.5rem;
   height: 2rem;
   width: 100%;
@@ -161,40 +160,38 @@ a {
 }
 
 .form {
+  border: 1px solid var(--clr-pastel);
+  box-shadow: 10px 10px var(--clr-pastel);
+  border-radius: 2rem;
   margin: 1rem;
   padding: 1rem;
-  border: 1px solid #978c81;
-  border-radius: 2rem;
-  box-shadow: 10px 10px #978c81;
 }
 .form div {
-  display: flex;
   margin-bottom: 1.5rem;
   justify-content: space-between;
 }
 .form div input {
-  width: 15rem;
+  width: 9rem;
   height: 2rem;
   margin-left: 8rem;
-  border: 2px solid whitesmoke;
 }
 .form div button {
-  padding: 0.8rem;
-  cursor: pointer;
+  border: 2px solid var(--clr-pastel);
+  background-color: var(--clr-pastel);
   border-radius: 1.5rem;
-  border: 2px solid #978c81;
-  background-color: var(--clr-bg);
+  padding: 0.8rem;
   color: white;
+  cursor: pointer;
 }
 
-/********************************
-          Contact /Add Form
+/*******************************
+        Contact /Add Form       
 ********************************/
 .contact {
   margin: 0.5rem;
 }
 .contact .c_form {
-  border: 1px solid #978c81;
+  border: 1px solid var(--clr-pastel);
   border-radius: 2rem;
   box-shadow: 10px 10px #978c81;
   padding: 1rem;
@@ -205,12 +202,12 @@ a {
   border: 1px solid white;
 }
 .contact .c_form button {
-  padding: 0.8rem;
-  cursor: pointer;
+  border: 2px solid var(--clr-pastel);
+  background-color: var(--clr-pastel);
   border-radius: 1.5rem;
-  border: 2px solid #978c81;
-  background-color: var(--clr-bg);
+  padding: 0.8rem;
   color: white;
+  cursor: pointer;
 }
 
 .art {
@@ -222,12 +219,12 @@ a {
   border: 1px solid white;
 }
 .art .add button {
-  padding: 0.8rem;
-  cursor: pointer;
+  border: 2px solid var(--clr-pastel);
+  background-color: var(--clr-pastel);
   border-radius: 1.5rem;
-  border: 2px solid #978c81;
-  background-color: var(--clr-bg);
+  padding: 0.8rem;
   color: white;
+  cursor: pointer;
 }
 
 /********************************
@@ -242,29 +239,37 @@ a {
   justify-content: center;
 }
 .entête figure {
-  padding: 1rem;
-  border: 1px solid black;
+  border: 2px solid var(--clr-pastel);
   border-radius: 2rem;
+  padding: 1rem;
 }
 .entête figure button {
-  padding: 0.8rem;
-  cursor: pointer;
+  border: 2px solid var(--clr-pastel);
+  background-color: var(--clr-pastel);
   border-radius: 1.5rem;
-  border: 2px solid #978c81;
-  background-color: var(--clr-bg);
+  padding: 0.8rem;
   color: white;
+  cursor: pointer;
 }
 .entête figure button a {
   padding: 0.5rem;
-  color: white;
+  color: var(--clr-white);
+}
+
+/********************************
+            About
+********************************/
+span {
+  font-style: italic;
+  font-weight: 700;
 }
 
 figcaption {
   justify-content: space-between;
 }
 figcaption .fas {
-  cursor: pointer;
   margin-left: 0.5rem;
+  cursor: pointer;
 }
 
 p.elp {
@@ -289,17 +294,17 @@ p.elp {
   list-style: none;
 }
 .categories ul li {
-  padding: 0.5rem;
-  margin: 0.5rem;
-  border: 1px solid black;
+  border: 1px solid var(--clr-black);
   border-radius: 1rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
 }
 
 /********************************
-           Profil
+            Profil
 ********************************/
 .profil {
-  border: 1px solid #978c81;
+  border: 1px solid var(--clr-pastel);
   border-radius: 2rem;
   box-shadow: 10px 10px #978c81;
   padding: 1rem;
@@ -326,10 +331,19 @@ img {
         Requests display
 ********************************/
 .req {
-  border: 1px solid #978c81;
+  border: 1px solid var(--clr-pastel);
+  box-shadow: var(--clr-pastel);
   border-radius: 2rem;
-  box-shadow: #978c81;
   padding: 1rem;
+}
+
+/********************************
+            Dashboard
+********************************/
+.table {
+  border: 1px solid var(--clr-black);
+  gap: 1rem;
+  width: 100%;
 }
 
 /**************
@@ -342,11 +356,33 @@ footer {
   width: 100%;
 }
 footer div.drap {
-  border: 2px solid black;
+  border: 2px solid var(--clr-black);
 }
 footer hr {
+  border: 1px solid var(--clr-black);
   width: 2rem;
-  border: 1px solid black;
 }
+
+/********************************************************
+                        Responsive                      
+*********************************************************/
+/*******************************************
+                Tablet
+*******************************************/
+/*******************
+        Header            
+********************/
+/*******************
+        Footer            
+********************/
+/*******************************************
+                Desktop
+*******************************************/
+/*******************
+        Header            
+********************/
+/*******************
+        Footer            
+********************/
 
 /*# sourceMappingURL=index.css.map */
