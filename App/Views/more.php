@@ -16,7 +16,6 @@
         <?php if(isset($_SESSION["users"]) && $_SESSION["users"] == "users") : ?>
             <h2>Créer votre article</h2>    
             <p>En tant que membre de notre blog, vous avez la possiblité de créer vos articles. </p>
-            
             <h4> <?php echo $_GET["msg"] ?? "" ?></h4>
             
             <form action="/article-controller/article" method="post" class="add" enctype="multipart/form-data">  
@@ -43,7 +42,7 @@
                     <input type="file" name="file" id="file">
                 </div>
                 <div>
-                    <button type="submit" name="submit">Envoyer le message</button>
+                    <button type="submit" name="submit">Publier l'article</button>
                 </div>
             </form>
         <?php endif; ?> 

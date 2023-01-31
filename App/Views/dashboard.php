@@ -30,7 +30,7 @@
                 <input type="file" name="file" id="file">
             </div>
             <div>
-                <button type="submit" name="submit">Envoyer le message</button>
+                <button type="submit" name="submit">Envoyer l'article</button>
             </div>
         </form>
     </div>
@@ -45,38 +45,36 @@
                 <br>
             <?php endforeach; ?>
         </div>  
-        <br>
+        <!-- <br>
         <h2>Gestion des images</h2>    
         <div>
             <br>
             <form action="" method="post" enctype="multipart/form-data">
             <input type="file" name="file" id="file">
             </form>
-        </div>
+        </div> -->
         <br>
         <h2>Gestion des articles</h2>
-        
         <div>
             <table class="table">
                 <tr>
-                    <th>Identifiant de l'article</th>
                     <th>Titre de l'article</th>
                     <th>Auteur de l'article</th>
                     <th>Interventions</th>
                 </tr>
                 <?php foreach($data as $ele) : ?>
                     <tr>
-                        <td><?php echo $ele["art_id"] ?></td>
                         <td><?php echo $ele["art_artname"] ?></td>
                         <td><?php echo $ele["art_lname"] . " " . $ele["art_fname"] ?></td>
                         <td>
-                            <button type="submit" name="submit">Publier</button>
-                            <button type="submit" name="submit">Modifier</button>
-                            <button type="submit" name="submit">Retirer</button>
+                            <form action="/article-controller/delarticle" method="post">
+                                <input type="hidden" name="id" value="<?php echo $ele["art_id"] ?>"><a href="">
+                                <button type="submit" name="delete" class="delete"><i style='font-size:1rem; padding-right:.3rem' class='fas'>&#xf2ed;</i>Retirer</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>
-            </table>        
+            </table>      
         </div>
     </div>
 </main>

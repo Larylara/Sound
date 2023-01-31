@@ -10,14 +10,14 @@
                 <br>
                 <p>Nom : <strong><?php echo $_SESSION["lname"]; ?></strong></p>
                 <p>Prénoms : <strong><?php echo $_SESSION["fname"]; ?></strong></p>
-                <p>Nom d'utilisateur : <strong><?php echo $_SESSION["uname"]; ?></strong></p>
                 <p class="mb">Addresse email: <strong><?php echo $_SESSION["email"]; ?></strong></p>
+                <p>Nom d'utilisateur : <strong><?php echo $_SESSION["uname"]; ?></strong></p>
             <?php else :?>
-                <p><strong>Vous n'avez pas de compte. Pour en avoir un vous devez vous inscrire</strong></p>
+                <p><strong>Vous n'avez pas de compte. Pour en avoir un vous devez vous inscrire.</strong></p>
                 <p>Nom :  </p>
                 <p>Prénoms : </p>
-                <p>Nom d'utilisateur : </p>
                 <p class="mb">Addresse email: </p>
+                <p>Nom d'utilisateur : </p>
             <?php endif; ?>
     </div>
 </main>

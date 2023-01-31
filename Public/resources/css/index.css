@@ -9,8 +9,12 @@
   --clr-black: black;
   --clr-white: white;
   --clr-w_smoke: whitesmoke;
+  --clr-dd: #dddddd;
   --clr-pastel: #978c81;
+  --clr-green: green;
   --clr-red: red;
+  --clr-orange: orange;
+  --clr-purple: purple;
 }
 
 *,
@@ -48,11 +52,36 @@ body {
   text-align: center;
 }
 
-.art_pic {
-  width: 100%;
+/*********************
+      @font-face
+**********************/
+@font-face {
+  font-family: Merienda;
+  src: url("../fonts/Merienda/Merienda-Regular.ttf") format("truetype");
+  font-style: normal;
+}
+@font-face {
+  font-family: Mali-light;
+  src: url("../fonts/mali/mali-lightitalic.ttf") format("truetype");
+  font-style: normal;
+}
+p,
+button,
+a,
+input,
+label,
+textarea {
+  font-family: Mali-light;
 }
 
-/*********************
+h1,
+h2,
+h3,
+h4 {
+  font-family: Merienda;
+}
+
+/**********************
         @mixin
 **********************/
 textarea {
@@ -64,7 +93,7 @@ textarea {
     Header
 **************/
 header {
-  background-image: linear-gradient(white, #978c81);
+  background-image: linear-gradient(var(--clr-white), var(--clr-pastel));
 }
 
 .logo {
@@ -91,7 +120,7 @@ header {
   background-color: var(--clr-pastel);
 }
 .navbar nav li:hover a {
-  color: black;
+  color: var(--clr-black);
 }
 .navbar div.drap {
   border: 1px solid var(--clr-pastel);
@@ -112,7 +141,7 @@ header {
   background-color: var(--clr-pastel);
 }
 .navbar div.drap ul li:hover a {
-  color: white;
+  color: var(--clr-white);
 }
 .navbar div.drapp {
   border-radius: 0.5rem;
@@ -133,7 +162,7 @@ header {
   background-color: var(--clr-pastel);
 }
 .navbar div.drapp ul li:hover a {
-  color: white;
+  color: var(--clr-white);
 }
 .navbar .aff {
   border: 1px solid var(--clr-pastel);
@@ -148,7 +177,40 @@ header {
 
 a {
   text-decoration: none;
-  color: black;
+  color: var(--clr-black);
+}
+
+/**************
+    Icons
+**************/
+.icons {
+  width: 1.5rem;
+}
+
+.tooltip {
+  position: relative;
+}
+
+.tooltipicon {
+  position: absolute;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+span.tooltiptext {
+  background-color: var(--clr-white);
+  visibility: hidden;
+  color: var(--clr-pastel);
+  text-align: center;
+  border-radius: 6px;
+  padding: 0.5rem;
+  top: -2.5rem;
+  left: -0.8rem;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
 }
 
 /********************************
@@ -173,19 +235,19 @@ a {
 .form div input {
   width: 9rem;
   height: 2rem;
-  margin-left: 8rem;
+  margin: 0.3rem 0 0.3rem 0;
 }
 .form div button {
   border: 2px solid var(--clr-pastel);
   background-color: var(--clr-pastel);
   border-radius: 1.5rem;
   padding: 0.8rem;
-  color: white;
+  color: var(--clr-white);
   cursor: pointer;
 }
 
 /*******************************
-        Contact /Add Form       
+        Contact / Add Form       
 ********************************/
 .contact {
   margin: 0.5rem;
@@ -193,20 +255,21 @@ a {
 .contact .c_form {
   border: 1px solid var(--clr-pastel);
   border-radius: 2rem;
-  box-shadow: 10px 10px #978c81;
+  box-shadow: 10px 10px var(--clr-pastel);
   padding: 1rem;
 }
 .contact .c_form input {
+  border: 1px solid var(--clr-white);
   width: 100%;
   height: 4rem;
-  border: 1px solid white;
+  margin: 1rem;
 }
 .contact .c_form button {
   border: 2px solid var(--clr-pastel);
   background-color: var(--clr-pastel);
   border-radius: 1.5rem;
   padding: 0.8rem;
-  color: white;
+  color: var(--clr-white);
   cursor: pointer;
 }
 
@@ -214,17 +277,108 @@ a {
   margin: 1rem;
 }
 .art .add input {
+  border: 1px solid var(--clr-white);
   width: 100%;
   height: 4rem;
-  border: 1px solid white;
+  margin: 1rem;
 }
 .art .add button {
   border: 2px solid var(--clr-pastel);
   background-color: var(--clr-pastel);
   border-radius: 1.5rem;
   padding: 0.8rem;
-  color: white;
+  color: var(--clr-white);
   cursor: pointer;
+}
+
+/*******************
+        Article      
+*******************/
+.parent {
+  position: relative;
+}
+.parent .child {
+  position: absolute;
+  color: var(--clr-pastel);
+  left: -2rem;
+  bottom: -0.5rem;
+  font-size: 2rem;
+}
+
+.art_pic {
+  object-fit: cover;
+  width: 100%;
+  height: 25rem;
+  border-radius: 0.5rem;
+}
+
+.art_img {
+  object-fit: cover;
+}
+
+.all_coms {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 15rem;
+}
+.all_coms .later_coms {
+  background-color: var(--clr-w_smoke);
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.send_coms {
+  border: 2px solid var(--clr-pastel);
+  background-color: var(--clr-pastel);
+  border-radius: 1.5rem;
+  padding: 0.8rem;
+  color: var(--clr-white);
+  cursor: pointer;
+}
+
+.categories .buttons {
+  display: flex;
+  flex-direction: column;
+}
+.categories button {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border: 1px solid var(--clr-pastel);
+}
+.categories button:hover {
+  background-color: var(--clr-pastel);
+  color: var(--clr-white);
+  cursor: pointer;
+}
+
+.big_drill,
+.big_gospel,
+.big_rap_us,
+.big_afro_rap,
+.big_afrobeats,
+.big_afro_rap,
+.big_afrolove,
+.big_french_rap,
+.big_autres {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--clr-black);
+  margin: 1rem;
+  padding: 1rem;
+}
+.big_drill video,
+.big_gospel video,
+.big_rap_us video,
+.big_afro_rap video,
+.big_afrobeats video,
+.big_afro_rap video,
+.big_afrolove video,
+.big_french_rap video,
+.big_autres video {
+  border: 1px solid var(--clr-purple);
+  margin: 1rem;
 }
 
 /********************************
@@ -248,7 +402,7 @@ a {
   background-color: var(--clr-pastel);
   border-radius: 1.5rem;
   padding: 0.8rem;
-  color: white;
+  color: var(--clr-white);
   cursor: pointer;
 }
 .entête figure button a {
@@ -256,8 +410,12 @@ a {
   color: var(--clr-white);
 }
 
+.content {
+  justify-content: center;
+}
+
 /********************************
-            About
+            More
 ********************************/
 span {
   font-style: italic;
@@ -268,13 +426,12 @@ figcaption {
   justify-content: space-between;
 }
 figcaption .fas {
-  margin-left: 0.5rem;
   cursor: pointer;
 }
 
 p.elp {
   white-space: nowrap;
-  width: 400px;
+  width: 500px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -284,29 +441,13 @@ p.elp {
   height: 5rem;
 }
 
-.categories {
-  margin: 1rem;
-  justify-content: center;
-}
-.categories ul {
-  padding: 0;
-  justify-content: space-around;
-  list-style: none;
-}
-.categories ul li {
-  border: 1px solid var(--clr-black);
-  border-radius: 1rem;
-  margin: 0.5rem;
-  padding: 0.5rem;
-}
-
 /********************************
             Profil
 ********************************/
 .profil {
   border: 1px solid var(--clr-pastel);
   border-radius: 2rem;
-  box-shadow: 10px 10px #978c81;
+  box-shadow: 10px 10px var(--clr-pastel);
   padding: 1rem;
 }
 
@@ -342,8 +483,39 @@ img {
 ********************************/
 .table {
   border: 1px solid var(--clr-black);
-  gap: 1rem;
   width: 100%;
+  border-collapse: collapse;
+}
+.table td, .table th {
+  border: 1px solid var(--clr-dd);
+  padding: 1rem;
+}
+.table td button, .table th button {
+  margin: 0.3rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.table td .show, .table th .show {
+  border: 1px solid var(--clr-orange);
+  color: var(--clr-orange);
+}
+.table td .show:hover, .table th .show:hover {
+  border: 1px solid var(--clr-orange);
+  background-color: var(--clr-orange);
+  color: var(--clr-white);
+}
+.table td .delete, .table th .delete {
+  border: 1px solid var(--clr-red);
+  color: var(--clr-red);
+}
+.table td .delete:hover, .table th .delete:hover {
+  border: 1px solid var(--clr-red);
+  background-color: var(--clr-red);
+  color: var(--clr-white);
+}
+.table tr:nth-child(even) {
+  background-color: var(--clr-dd);
 }
 
 /**************
@@ -354,35 +526,162 @@ footer {
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
+  padding: 1rem;
 }
-footer div.drap {
-  border: 2px solid var(--clr-black);
+footer .first_div p {
+  margin: 0;
+}
+footer .sound {
+  margin: 0;
+}
+footer div {
+  padding: 1rem;
+}
+footer .fab {
+  margin: 0.5rem;
 }
 footer hr {
   border: 1px solid var(--clr-black);
-  width: 2rem;
+  width: 4rem;
 }
 
-/********************************************************
-                        Responsive                      
-*********************************************************/
-/*******************************************
-                Tablet
-*******************************************/
-/*******************
-        Header            
-********************/
-/*******************
-        Footer            
-********************/
-/*******************************************
-                Desktop
-*******************************************/
-/*******************
-        Header            
-********************/
-/*******************
-        Footer            
-********************/
+/**********************************************************************************************
+                                        Responsive                      
+**********************************************************************************************/
+/*******************************************************
+                        Tablet
+*******************************************************/
+@media screen and (min-width: 680px) {
+  /********************
+          Header            
+  ********************/
+  /********************
+          Footer            
+  ********************/
+  footer {
+    display: flex;
+    justify-content: space-around;
+  }
+  footer div.padding {
+    padding-top: 3rem;
+  }
+  footer hr {
+    border: 1px solid var(--clr-black);
+    width: 0;
+    margin: 0;
+  }
+  /********************
+        categories            
+  ********************/
+  .categories .buttons {
+    display: block;
+  }
+  .categories button {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border: 1px solid var(--clr-pastel);
+  }
+  .categories button:hover {
+    background-color: var(--clr-pastel);
+    color: var(--clr-white);
+    cursor: pointer;
+  }
+  .big_drill,
+  .big_gospel,
+  .big_rap_us,
+  .big_afro_rap,
+  .big_afrobeats,
+  .big_afrolove,
+  .big_french_rap,
+  .big_autres {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+  }
+}
+/*******************************************************
+                        Desktop
+*******************************************************/
+@media screen and (min-width: 980px) {
+  /********************
+          Header            
+  ********************/
+  .logo {
+    justify-content: left;
+    position: relative;
+  }
+  .logo a > h1 {
+    position: absolute;
+    left: 10rem;
+    top: 3rem;
+  }
+  .logo p {
+    position: absolute;
+    left: 10rem;
+    top: 6rem;
+    margin: 0;
+  }
+  .navbar {
+    position: absolute;
+    right: 0rem;
+    top: 4rem;
+  }
+  .navbar nav li {
+    margin: 0 1rem;
+  }
+  .navbar div.drap {
+    position: absolute;
+    right: 12.5rem;
+    width: 10rem;
+  }
+  .navbar div.drapp {
+    position: absolute;
+    right: 2rem;
+    width: 10rem;
+  }
+  /********************
+          Footer            
+  ********************/
+  footer {
+    display: flex;
+    justify-content: space-around;
+  }
+  footer div.padding {
+    padding-top: 3rem;
+  }
+  footer hr {
+    border: 1px solid var(--clr-black);
+    width: 0;
+    margin: 0;
+  }
+  /********************
+        categories          
+  ********************/
+  .categories .buttons {
+    display: grid;
+  }
+  .categories button {
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border: 1px solid var(--clr-pastel);
+  }
+  .categories button:hover {
+    background-color: var(--clr-pastel);
+    color: var(--clr-white);
+    cursor: pointer;
+  }
+  .big_drill,
+  .big_gospel,
+  .big_rap_us,
+  .big_afro_rap,
+  .big_afrobeats,
+  .big_afrolove,
+  .big_french_rap,
+  .big_autres {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+  }
+}
 
 /*# sourceMappingURL=index.css.map */

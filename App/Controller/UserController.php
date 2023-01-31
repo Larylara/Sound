@@ -7,7 +7,6 @@
     class UserController {
         //variable pour instancier la classe UserModel
         protected $model;
-
         protected $lname;
         protected $fname;
         protected $username;
@@ -15,7 +14,6 @@
         protected $pwd;
         protected $c_pwd;
         protected $pic;
-
         protected $file;
         protected $descript;
         protected $date_time;
@@ -136,7 +134,6 @@
             $this->model = new UserModel();
             $forlog = $this->model->userLogin($this->username);
             $pass = password_verify($this->pwd, $forlog[0]["user_password"]);
-
             $length = count($forlog);
 
             if($pass === true) {

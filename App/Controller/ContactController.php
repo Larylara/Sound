@@ -1,6 +1,5 @@
 <?php
     session_start();
-
     require "../App/Models/ContactModel.php";
 
     class ContactController {
@@ -18,8 +17,7 @@
         }
 
         public function emptyInputs() {
-            if (empty($this->lname) || empty($this->fname) || empty($this->email) || empty($this->messages)) {
-                
+            if (empty($this->lname) || empty($this->fname) || empty($this->email) || empty($this->messages)) {                
                 header("Location: /pages-controller/contact?msg=Veuillez remplir tous les champs");
                 exit();
             } else {
@@ -48,12 +46,9 @@
 
                     header("Location: /pages-controller/contact?msg=Message envoyé avec succès");
                     exit();
-                    
                 } else {
-
                     header("Location: /pages-controller/contact?msg=Echec d'envoi du messages");
                     exit();
-
                 }
             }
         }

@@ -1,5 +1,6 @@
 <?php
      require "../App/Models/ArticleModel.php";
+     require "../App/Models/CommentModel.php";
      require "../App/Models/UserModel.php";
 
      class PagesController {
@@ -23,8 +24,8 @@
                require_once ("../App/Views/contact.php");
           }
 
-          public function about() {
-               require_once ("../App/Views/about.php");
+          public function more() {
+               require_once ("../App/Views/more.php");
           }
 
           public function article() {
@@ -34,6 +35,10 @@
                
                $card = new ArticleModel();
                $data = $card->idArticle($id);
+               
+               $coms = new CommentModel();
+               $coms_data = $coms->idComment($id);
+
                require_once ("../App/Views/article.php");
           }
 

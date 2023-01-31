@@ -9,7 +9,6 @@
         protected $email;
         protected $password;
         protected $pic;
-
         protected $file;
         protected $descript;
         protected $date_time;
@@ -23,7 +22,6 @@
 
             // cette requête vérifie si l'utilisateur qui est entrain de s'inscrire existe déjà dans la base
             $req = $conn->prepare("SELECT * FROM `sound`.users where user_email = ? OR user_username = ?;");
-
             $req->execute(array($this->email, $this->username));
 
             //transformation des données en tableau
@@ -66,15 +64,13 @@
             $stmt = $conn->prepare($request);
             
             // Définir le template du stmt
-            $stmt->execute([
-                
+            $stmt->execute([                
                 ":lname" => $this->lname,
                 ":fname" => $this->fname,
                 ":username" => $this->username,
                 ":email" => $this->email,
                 ":pwd" => password_hash($this->pwd, PASSWORD_DEFAULT),
-                ":pic" => $this->pic
-                
+                ":pic" => $this->pic                
             ]);
         }
 
@@ -85,8 +81,7 @@
             $connect = $this->connect();
         
             // cette requête vérifie si l'utilisateur quest entrain de s'inscrire existe déjà dans lbase
-            $re = $connect->prepare("SELECT * FROM `sound`.users where user_username = ?");
-        
+            $re = $connect->prepare("SELECT * FROM `sound`.users where user_username = ?");        
             $re->execute(array($this->username));
         
             //transformation des données en tableau
@@ -101,8 +96,7 @@
             $connect = $this->connect();
         
             // cette requête sélectionne tous les articles de la base de données
-            $recup = $connect->prepare("SELECT * FROM `sound`.requests");
-        
+            $recup = $connect->prepare("SELECT * FROM `sound`.requests");        
             $recup->execute();
         
             //transformation des données en tableau

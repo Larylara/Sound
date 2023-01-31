@@ -21,26 +21,23 @@
             return $data;
         }
 
-        public function emptyInputs() {
-            
+        public function emptyInputs() {            
             if (empty($this->lname) || empty($this->fname) || empty($this->email) || empty($this->art_name) || empty($this->descript)) {
-                header("Location: /pages-controller/about?msg=Veuillez remplir tous les champs");
+                header("Location: /pages-controller/admin?msg=Veuillez remplir tous les champs");
                 exit();
             } else {
                 return false;
-            }
-            
+            }            
         }
 
-        public function article(){
-            
+        public function article(){            
             if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit"])) {
                 
                 $this->lname = $this->test_input($_POST["lname"]);
                 $this->fname = $this->test_input($_POST["fname"]);
                 $this->email = $this->test_input($_POST["email"]);
                 $this->art_name  = $this->test_input($_POST["artname"]);
-                $this->descript  = $this->test_input($_POST["descript"]);
+                $this->descript  = nl2br($this->test_input($_POST["descript"]));
 
                 $file_name = $_FILES["file"]["name"];
                 $file_path = $_FILES["file"]["tmp_name"];
@@ -57,24 +54,49 @@
                     header("Location: /pages-controller/home");
                     exit();  
                 } else {
-                    header("Location: /pages-controller/about?msg=Echec d'envoi de l'article");
+                    header("Location: /pages-controller/article?msg=Echec d'envoi de l'article");
                     exit();
                 }
             }
+        }
+
+        public function delarticle(){            
+            if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["delete"])) {
+                $identifiant = $_POST["id"];
+                $com = new CommentModel();
+                $com->deleteComment($identifiant);
+                $mod = new ArticleModel();
+                $mod->deleteArticle($identifiant);
+                
+                header("Location: /pages-controller/admin?msg=Article supprimé avec succès");
+                exit();
+            } else {
+                header("Location: /pages-controller/admin?msg=Echec de suppression de l'article");
+                exit();
+            }
+        }
+
+        public function empty_Input($id_) {            
+            if (empty($c_comment)) {
+                header("Location: /pages-controller/article?id=$id_&msg=Pensez à remplir le champ de commentaire pour pouvoir en envoyé un");
+            } else {
+                return false;
+            }            
         }
 
         public function comment(){
             if($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit"])) {
                 $c_comment  = $this->test_input($_POST["comments"]);
                 $id_ = $this->test_input($_POST["art_id"]);
-                            
+                        
+                $this->empty_Input($id_);
                 $this->model = new CommentModel();
                 $this->model->insertComment($id_, $c_comment);
             
-                header("Location: /pages-controller/?id=$id/article");
+                header("Location: /pages-controller/article?id=$id_&msg=Commentaire envoyé avec succès");
                 exit();    
             } else {
-                header("Location: /pages-controller/home?msg=Echec d'envoi du commentaire");
+                header("Location: /pages-controller/article?id=$id_&msg=Echec d'envoi du commentaire");
                 exit();
             }
         }

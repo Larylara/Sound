@@ -2,7 +2,6 @@
                                     Mobile first
 *******************************************************************************/
 
-
 /************************
         Reset css 
 ************************/
@@ -10,8 +9,12 @@
     --clr-black: black;
     --clr-white: white;
     --clr-w_smoke: whitesmoke;
+    --clr-dd: #dddddd;
     --clr-pastel: #978c81;
+    --clr-green: green;
     --clr-red: red;
+    --clr-orange: orange;
+    --clr-purple: purple;
 } 
 
 *,
@@ -49,40 +52,63 @@ body {
     text-align: center;
 }
 
-.art_pic {
-    width: 100%;
+/*********************
+      @font-face
+**********************/
+
+@font-face {
+    font-family: Merienda;
+    src: url("../fonts/Merienda/Merienda-Regular.ttf") format("truetype");
+    font-style: normal;
+}
+@font-face {
+    font-family: Mali-light;
+    src: url("../fonts/mali/mali-lightitalic.ttf") format("truetype");
+    font-style: normal;
 }
 
-/*********************
+p,
+button,
+a,
+input,
+label,
+textarea {
+    font-family: Mali-light;    
+}
+h1,
+h2,
+h3,
+h4 {
+    font-family: Merienda;
+}
+
+/**********************
         @mixin
 **********************/
 
 @mixin positions($value) {
     position: $value;
 }
-
 @mixin border($px, $color) {
     border: $px solid var($color);
 }
-
 @mixin bcg_c($color) {
     background-color: var($color);
 }
-
 @mixin buttons {
     @include border(2px, --clr-pastel);
     @include bcg_c(--clr-pastel);
     border-radius: 1.5rem;
     padding: .8rem;
-    color: white;
+    color: var(--clr-white);
     cursor: pointer;
 }
-
 @mixin c_a {
     input {
+        @include border(1px, --clr-white);
         width: 100%;
         height: 4rem;
-        border: 1px solid white;
+        margin: 1rem;
     }
     
     button {
@@ -100,13 +126,12 @@ textarea {
 **************/
 
 header {
-    background-image: linear-gradient( white, #978c81 );
+    background-image: linear-gradient( var(--clr-white) ,var(--clr-pastel) );
 }
 
 .logo {
     justify-content: center;
     margin-bottom: 2rem;
-
     p {
         margin: 0;
     }
@@ -128,9 +153,8 @@ header {
 
         li:hover {
             @include bcg_c(--clr-pastel);
-
             a {
-                color: black;
+                color: var(--clr-black);
             }
         }
     }
@@ -156,7 +180,7 @@ header {
                 @include bcg_c(--clr-pastel);
 
                 a {
-                    color: white;
+                    color: var(--clr-white);
                 }
             }
         }
@@ -183,7 +207,7 @@ header {
                 @include bcg_c(--clr-pastel);
 
                 a {
-                    color: white;
+                    color: var(--clr-white);
                 }
             }
         }
@@ -204,8 +228,43 @@ header {
   
 a {
     text-decoration: none;
-    color: black;
+    color: var(--clr-black);
 }
+
+/**************
+    Icons
+**************/
+
+.icons {
+    width: 1.5rem;
+}
+
+.tooltip {
+    @include positions(relative);
+}
+
+.tooltipicon {
+    @include positions(absolute);
+}
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+span.tooltiptext {
+    @include bcg_c(--clr-white );
+    visibility: hidden;
+    color: var(--clr-pastel);
+    text-align: center;
+    border-radius: 6px;
+    padding: .5rem ;
+    top: -2.5rem;
+    left: -.8rem;
+    
+    /* Position the tooltip */
+    @include positions(absolute);
+    z-index: 1;
+}
+
 
 /********************************
     Login And Register Forms
@@ -230,9 +289,8 @@ a {
         input {
             width: 9rem;
             height: 2rem;
-            margin-left: 8rem;
+            margin: .3rem 0 .3rem 0;
         }
-
         button {
             @include buttons();
         }
@@ -240,7 +298,7 @@ a {
 }
 
 /*******************************
-        Contact /Add Form       
+        Contact / Add Form       
 ********************************/
 
 .contact {
@@ -250,7 +308,7 @@ a {
         @include c_a();
         @include border(1px, --clr-pastel);
         border-radius: 2rem;
-        box-shadow: 10px 10px #978c81;
+        box-shadow: 10px 10px var(--clr-pastel);
         padding: 1rem;
     }
 }
@@ -263,6 +321,86 @@ a {
     }
 }
 
+/*******************
+        Article      
+*******************/
+.parent {
+    @include positions(relative);
+
+    .child {
+        @include positions(absolute);  
+        color: var(--clr-pastel);
+        left: -2rem;
+        bottom: -.5rem;
+        font-size: 2rem;
+    }
+}
+
+.art_pic {
+    object-fit: cover;
+    width: 100%;
+    height: 25rem;
+    border-radius: .5rem;
+}
+
+.art_img {
+    object-fit: cover;
+}
+
+.all_coms {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 15rem;
+
+    .later_coms {
+        @include bcg_c(--clr-w_smoke);
+        margin: 1rem;
+        padding: .5rem;
+        border-radius: 1rem;
+    }
+}
+
+.send_coms {
+    @include buttons();
+}
+
+.categories {
+    .buttons {
+        display: flex;
+        flex-direction: column;
+    }
+    button {
+        border-radius: .5rem;
+        padding: .5rem;
+        margin: .5rem;
+        @include border(1px, --clr-pastel);
+    }
+    button:hover {
+        @include bcg_c(--clr-pastel);
+        color: var(--clr-white);
+        cursor: pointer;
+    }
+}
+
+.big_drill,
+.big_gospel,
+.big_rap_us,
+.big_afro_rap,
+.big_afrobeats,
+.big_afro_rap,
+.big_afrolove,
+.big_french_rap,
+.big_autres {
+    display: flex;
+    flex-direction: column;
+    @include border(2px, --clr-black);
+    margin: 1rem;
+    padding: 1rem;
+        video {
+            @include border(1px, --clr-purple);
+            margin: 1rem;
+        }
+}
 
 /********************************
             Home
@@ -283,7 +421,6 @@ a {
         
         button {
             @include buttons();
-            
             a {
                 padding:.5rem;
                 color: var(--clr-white);
@@ -292,9 +429,13 @@ a {
     }   
 }
 
+.content {
+    justify-content: center;
+}
+
 
 /********************************
-            About
+            More
 ********************************/
 
 span {
@@ -306,14 +447,13 @@ figcaption {
     justify-content: space-between;
 
     .fas {
-        margin-left: .5rem;
         cursor: pointer;
     }
 }
 
 p.elp {
     white-space: nowrap;
-    width: 400px;
+    width: 500px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -323,24 +463,6 @@ p.elp {
     height: 5rem;
 } 
 
-.categories {
-    margin: 1rem;
-    justify-content: center;
-
-    ul {
-        padding: 0;
-        justify-content: space-around;
-        list-style: none;
-        
-        li {
-            @include border(1px, --clr-black);
-            border-radius: 1rem;
-            margin: .5rem;
-            padding: .5rem;
-        }
-    }
-}
-
 /********************************
             Profil
 ********************************/
@@ -348,7 +470,7 @@ p.elp {
 .profil {
     @include border(1px, --clr-pastel);
     border-radius: 2rem;
-    box-shadow: 10px 10px #978c81;
+    box-shadow: 10px 10px var(--clr-pastel);
     padding: 1rem;
 }
 
@@ -387,11 +509,43 @@ img {
 
 .table {
     @include border(1px, --clr-black);
-    gap: 1rem;
     width: 100%;
+    border-collapse: collapse;
+        
+    td, th {
+        @include border(1px, --clr-dd);
+        padding: 1rem;
+
+        button {
+            margin: .3rem;
+            padding: .5rem;
+            border-radius: .5rem;
+            cursor: pointer;
+        }
+        .show {
+            @include border(1px, --clr-orange);
+            color: var(--clr-orange);
+        }
+        .show:hover {
+            @include border(1px, --clr-orange);
+            @include bcg_c(--clr-orange);
+            color: var(--clr-white);
+        }
+        .delete {
+            @include border(1px, --clr-red);
+            color: var(--clr-red);
+        }
+        .delete:hover {
+            @include border(1px, --clr-red);
+            @include bcg_c(--clr-red);
+            color: var(--clr-white);
+        }
+    }
+    
+    tr:nth-child(even) {
+        @include bcg_c(--clr-dd);
+    }
 }
-
-
 
 /**************
     Footer
@@ -402,47 +556,193 @@ footer {
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
+    padding: 1rem;
 
-    div.drap{
-        @include border(2px, --clr-black);
+    .first_div {
+        p {
+            margin: 0;
+        }
     }
-
+    .sound {
+        margin: 0;
+    }
+    div {
+        padding: 1rem;
+    }
+    .fab {
+        margin: 0.5rem;
+    }
     hr {
         @include border(1px, --clr-black);
-        width: 2rem;
+        width: 4rem;
     }
 }
 
 
-/********************************************************
-                        Responsive                      
-*********************************************************/
+/**********************************************************************************************
+                                        Responsive                      
+**********************************************************************************************/
 
-/*******************************************
-                Tablet
-*******************************************/
-    // @media screen and (min-width: 460px) {
-        
-    // }
+/*******************************************************
+                        Tablet
+*******************************************************/
 
-/*******************
-        Header            
-********************/
+@media screen and (min-width: 680px) {
+    
+    /********************
+            Header            
+    ********************/
+    
+
+    /********************
+            Footer            
+    ********************/
+
+    footer {
+        display: flex;
+        justify-content: space-around;
+
+        div.padding {
+            padding-top: 3rem
+        }
+        hr {
+            @include border(1px, --clr-black);
+            width: 0;
+            margin: 0;
+        }
+    }
+
+    /********************
+          categories            
+    ********************/
+
+    .categories {
+        .buttons {
+            display: block;
+        }
+        button {
+            border-radius: .5rem;
+            padding: .5rem;
+            margin: .5rem;
+            @include border(1px, --clr-pastel);
+        }
+        button:hover {
+            @include bcg_c(--clr-pastel);
+            color: var(--clr-white);
+            cursor: pointer;
+        }
+    }
+
+    .big_drill,
+    .big_gospel,
+    .big_rap_us,
+    .big_afro_rap,
+    .big_afrobeats,
+    .big_afrolove,
+    .big_french_rap,
+    .big_autres {
+        display: grid; 
+        grid-template-rows: 1fr 1fr;
+    }
+}
 
 
-/*******************
-        Footer            
-********************/
 
-        /*******************************************
+/*******************************************************
                         Desktop
-        *******************************************/
+*******************************************************/
+@media screen and (min-width: 980px) {
 
-/*******************
-        Header            
-********************/
+    /********************
+            Header            
+    ********************/
+    
+    .logo {
+        justify-content: left;
+        position: relative;
 
+        a>h1 {
+            position: absolute;
+            left: 10rem;
+            top: 3rem;
+        }
+        p {
+            position: absolute;
+            left: 10rem;
+            top: 6rem;
+            margin: 0;
+        }
+    }
+    .navbar {
+        position: absolute;
+        right: 0rem;
+        top: 4rem;
 
-/*******************
-        Footer            
-********************/
+        nav {
+            li {
+                margin: 0 1rem;
+            }
+        }
+        div.drap {
+            position: absolute;
+            right: 12.5rem;
+            width: 10rem;
+        }
+        div.drapp {
+            position: absolute;
+            right: 2rem;
+            width: 10rem;
+        }
+    }
+
+    /********************
+            Footer            
+    ********************/
+
+    footer {
+        display: flex;
+        justify-content: space-around;
+
+        div.padding {
+            padding-top: 3rem
+        }
+        hr {
+            @include border(1px, --clr-black);
+            width: 0;
+            margin: 0;
+        }
+    }
+
+    /********************
+          categories          
+    ********************/
+    .categories {
+        .buttons {
+            display: grid;
+        }
+        button {
+            border-radius: .5rem;
+            padding: .5rem;
+            margin: .5rem;
+            @include border(1px, --clr-pastel);
+        }
+        button:hover {
+            @include bcg_c(--clr-pastel);
+            color: var(--clr-white);
+            cursor: pointer;
+        }
+    }
+    
+    .big_drill,
+    .big_gospel,
+    .big_rap_us,
+    .big_afro_rap,
+    .big_afrobeats,
+    .big_afrolove,
+    .big_french_rap,
+    .big_autres {
+        display: grid; 
+        grid-template-rows: 1fr 1fr;
+    }
+
+}

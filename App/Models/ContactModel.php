@@ -24,13 +24,11 @@
             $stmt = $conn->prepare($request);
             
             // Définir le template du stmt
-            $stmt->execute([
-                
+            $stmt->execute([                
                 ":lname" => $this->lname,
                 ":fname" => $this->fname,
                 ":email" => $this->email,
-                ":messages" => $this->messages
-                
+                ":messages" => $this->messages                
             ]);
         }
 

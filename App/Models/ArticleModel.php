@@ -4,7 +4,6 @@
     class ArticleModel extends Connexion {
         
         public function insertArticle($a_lname, $a_fname, $a_email, $a_artname, $a_file, $a_descript) {
-            
             $lname = $a_lname;
             $fname = $a_fname;
             $email = $a_email;
@@ -21,20 +20,17 @@
             $stmt = $conn->prepare($request);
             
             // Définir le template du stmt
-            $stmt->execute([
-                
+            $stmt->execute([                
                 ":lname" => $lname,
                 ":fname" => $fname,
                 ":email" => $email,
                 ":artname" => $art_name,
                 ":picture" => $picture,
-                ":descript" => $descript
-                
+                ":descript" => $descript                
             ]);
         }
 
         public function cardArticle() {
-
             // connexion à la bdd
             $connect = $this->connect();
         
@@ -47,20 +43,17 @@
             $results = $recup->fetchAll();
                    
             //retourne un tableau
-            return $results;
-            
+            return $results;            
         }
         
         public function idArticle($id_) {
             $id = $id_;
-            // var_dump($id);
 
             // connexion à la bdd
             $connect = $this->connect();
             
             // cette requête sélectionne tous les articles de la base de données
-            $recup = $connect->prepare("SELECT * FROM `sound`.articles WHERE art_id=?");
-            
+            $recup = $connect->prepare("SELECT * FROM `sound`.articles WHERE art_id=?");            
             $recup->execute([
                 $id
             ]);
@@ -70,5 +63,17 @@
             
             //retourne un tableau
             return $results;
+        }
+
+        public function deleteArticle($id_) {
+            // connexion à la bdd
+            $connect = $this->connect();
+            
+            // cette requête sélectionne tous les articles de la base de données
+            $recup = $connect->prepare("DELETE FROM `sound`.articles WHERE art_id=?");
+            
+            $recup->execute([
+                $id_
+            ]);           
         }
     }
